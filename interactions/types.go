@@ -79,6 +79,31 @@ type InteractionApplicationCommandCallbackData struct {
 	TTS             *bool            `json:"tts,omitempty"`
 	Content         string           `json:"content"`
 	Flags         int           	 `json:"flags,omitempty"`
-	Embeds          json.Unmarshaler `json:"embeds,omitempty"`
+	Embeds          []Embed `json:"embeds,omitempty"`
 	AllowedMentions json.Unmarshaler `json:"allowed_mentions,omitempty"`
+}
+
+
+type Embed struct {
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	Color       int       `json:"color"`
+	Footer      Footer    `json:"footer"`
+	Thumbnail   Thumbnail `json:"thumbnail"`
+	Fields      []Field   `json:"fields"`
+}
+
+type Footer struct {
+	IconURL string `json:"icon_url"`
+	Text    string `json:"text"`
+}
+
+type Field struct {
+	Name   string `json:"name"`
+	Value  string `json:"value"`
+	Inline bool   `json:"inline,omitempty"`
+}
+
+type Thumbnail struct {
+	URL string `json:"url"`
 }
